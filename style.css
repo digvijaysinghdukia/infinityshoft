@@ -1,7 +1,7 @@
 :root {
     --blue: #8b46cc;
-    --background: #e9e9e9;
-    --background-section: #ffffff41;
+    --background: #ffffffd0;
+    --background-section: #ffffff38;
     --text: #333;
     --text-light: #666;
     --text-dark: #000;
@@ -37,7 +37,6 @@ body{
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 2rem;
 }
 
@@ -92,8 +91,10 @@ body{
 }
 
 @media screen and (max-width: 768px){
-    .continer{
+    .hero .continer{
         grid-template-columns: 1fr;
+        width: 90%;
+        height: 90%;
     }
     .continer .main{
         text-align: center;
