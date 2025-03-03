@@ -100,14 +100,73 @@ body{
         text-align: center;
     }
     .continer .main h1{
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     .continer .main p{
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
     .continer .main a{
         padding: 10px 15px;
     }
+    .continer .main-img img{
+        width: 130%;
+        height: 100%;
+        
+    }
+    .continer .main-img img:hover{
+        transform: scale(1.1);
+    }
 }
 
+/* slider css */
+.slider{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: auto;
+    padding: 2rem;
+    overflow: hidden;
+    width: 100%;
+    
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+}
+
+.slider-track {
+    display: flex;
+    animation: scroll 33s linear infinite;
+    
+}
+
+.slider-box {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+
+.slider-img svg {
+    width: 40px;
+    height: 40px;
+    fill: var(--text);
+    margin: 10px;
+}
+
+.slider-text h2 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
 
