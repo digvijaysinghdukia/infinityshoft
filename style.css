@@ -7,39 +7,96 @@
     --text-dark: #000;
     --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     /* reveres colors */
-    --background: #000000d0;
-    --background-section: #00000038;
-    --text: #fff;
-    --text-light: #ccc;
-    --text-dark: #fff;
-    --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --background-r: #000000d0;
+    --background-section-r: #00000038;
+    --text-r: #fff;
+    --text-light-r: #ccc;
+    --text-dark-r: #fff;
+    --shadow-r: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
 *{
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
     font-family: "Outfit", "Outfit Placeholder", sans-serif;
+    scroll-behavior: smooth;
+    transition-duration: 0.3s;
 }
 body{
     background-color: var(--background);
     background-image: url(./media/black-linen.png);
     display: grid;
     row-gap: 2rem;
+    
 }
-header{
+header {
     width: 100%;
     height: 80px;
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
     justify-content: space-between;
-    padding: 1rem 2rem;
+    align-items: center;
+    padding: 0rem 2rem;
+    position: absolute;
+    z-index: 10;
+    
+}
+.logo {
+    display: grid;
+    align-items: center;
+    gap: 10px;
+    grid-template-columns: auto auto;
+    place-items: center;
+}
+.logo a{
+    display: grid;
+    place-items: center;
+}
+.logo img {
+    width: 50px;
+    height: 50px;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.nav-slide {
+    position: relative;
+}
+
+.nav-links {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--text-dark);
+    width: 200px;
+    
+    display: none;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 5px;
+    z-index: 11;
+    transition-duration: 0.5s;
+}
+
+.nav-links li {
+    margin: 10px 0;
+}
+
+.nav-links a {
+    color: var(--background);
+    text-decoration: none;
+    font-size: 1rem;
 }
 
 #checkbox {
     display: none;
-  }
-  
-  .toggle {
+}
+
+.toggle {
     position: relative;
     width: 40px;
     height: 40px;
@@ -50,54 +107,58 @@ header{
     justify-content: center;
     gap: 10px;
     transition-duration: .5s;
-  }
-  
-  .bars {
+    z-index: 12;
+}
+
+.bars {
     width: 100%;
     height: 4px;
-    background-color: var(--blue);
+    background-color: var(--text-dark);
     border-radius: 4px;
-  }
-  
-  #bar2 {
-    transition-duration: .8s;
-  }
-  
-  #bar1 {
-    width: 50%;
-  }
-  
-  #bar2 {
-    width: 75%;
-  }
-  
-  #checkbox:checked + .toggle .bars {
+}
+
+#bar1 { width: 50%; }
+#bar2 { width: 75%; }
+
+#checkbox:checked + .toggle .bars {
     position: absolute;
     transition-duration: .5s;
-  }
-  
-  #checkbox:checked + .toggle #bar2 {
+}
+
+#checkbox:checked + .toggle #bar2 {
     transform: scaleX(0);
     transition-duration: .1s;
-  }
-  
-  #checkbox:checked + .toggle #bar1 {
+}
+
+#checkbox:checked + .toggle #bar1 {
     width: 100%;
     transform: rotate(45deg);
     transition-duration: .5s;
-  }
-  
-  #checkbox:checked + .toggle #bar3 {
+}
+
+#checkbox:checked + .toggle #bar3 {
     width: 100%;
     transform: rotate(-45deg);
     transition-duration: .5s;
-  }
-  
-  #checkbox:checked + .toggle {
+}
+
+#checkbox:checked + .toggle {
     transition-duration: .5s;
     transform: rotate(180deg);
-  }
+}
 
+#checkbox:checked ~ .nav-links {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        width: 100vw;
+        right: -34px;
+        text-align: center;
+        height: 100vh;
+    }
+}
 
 .hero{
     display: grid;
@@ -105,11 +166,11 @@ header{
     align-items: center;
     height: 100vh;
     width: 100%;
+    margin-top: 2rem;
 }
 .hero .continer{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
     width: 80%;
     height: 80%;
     margin: auto;
@@ -121,6 +182,8 @@ header{
     -webkit-backdrop-filter: blur(5px);
     border-radius: 2rem;
 }
+
+
 
 .continer .main{
     display: grid;
@@ -169,7 +232,6 @@ header{
     object-fit: cover;
     transition: transform 0.5s;
 }
-
 
 @media screen and (max-width: 768px){
     .hero .continer{
@@ -237,7 +299,7 @@ header{
 
 .slider-text h2 {
     font-size: 1.5rem;
-    color: #333;
+    color: var(--text);
 }
 
 @keyframes scroll {
@@ -836,6 +898,7 @@ header{
         row-gap: 1rem;
         width: 100%;
         height: 100%;
+        color: var(--text-light);
     }
     .contact-form input, .contact-form textarea{
         width: 100%;
@@ -844,6 +907,7 @@ header{
         border-radius: 5px;
         background-color: var(--background-section);
         box-shadow: var(--shadow);
+        color: var(--text-dark);
     }
     .contact-form input:focus, .contact-form textarea:focus{
         outline: none;
