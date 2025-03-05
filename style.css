@@ -7,12 +7,12 @@
     --text-dark: #000;
     --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     /* reveres colors */
-    --background-reverse: #000000d0;
-    --background-section-reverse: #00000038;
-    --text-reverse: #fff;
-    --text-light-reverse: #ccc;
-    --text-dark-reverse: #fff;
-    --shadow-reverse: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --background: #000000d0;
+    --background-section: #00000038;
+    --text: #fff;
+    --text-light: #ccc;
+    --text-dark: #fff;
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
 *{
     padding: 0px;
