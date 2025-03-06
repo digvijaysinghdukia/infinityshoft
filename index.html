@@ -618,23 +618,47 @@
         const themeToggle = document.getElementById('themeToggle');
         const root = document.documentElement;
 
+        // Check system theme
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        // Load saved theme from local storage
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme === 'dark' || (currentTheme === null && prefersDarkScheme)) {
+            themeToggle.checked = true;
+            setDarkTheme();
+        } else {
+            themeToggle.checked = false;
+            setLightTheme();
+        }
+
         themeToggle.addEventListener('change', () => {
             if (themeToggle.checked) {
-                root.style.setProperty('--background', 'var(--background-r)');
-                root.style.setProperty('--background-section', 'var(--background-section-r)');
-                root.style.setProperty('--text', 'var(--text-r)');
-                root.style.setProperty('--text-light', 'var(--text-light-r)');
-                root.style.setProperty('--text-dark', 'var(--text-dark-r)');
-                root.style.setProperty('--shadow', 'var(--shadow-r)');
+            setDarkTheme();
+            localStorage.setItem('theme', 'dark');
             } else {
-                root.style.setProperty('--background', '#ffffffd0');
-                root.style.setProperty('--background-section', '#ffffff38');
-                root.style.setProperty('--text', '#333');
-                root.style.setProperty('--text-light', '#3f3f3f');
-                root.style.setProperty('--text-dark', '#000');
-                root.style.setProperty('--shadow', '0 2px 5px rgba(0, 0, 0, 0.1)');
+            setLightTheme();
+            localStorage.setItem('theme', 'light');
             }
         });
+
+        function setDarkTheme() {
+            root.style.setProperty('--background', 'var(--background-r)');
+            root.style.setProperty('--background-section', 'var(--background-section-r)');
+            root.style.setProperty('--text', 'var(--text-r)');
+            root.style.setProperty('--text-light', 'var(--text-light-r)');
+            root.style.setProperty('--text-dark', 'var(--text-dark-r)');
+            root.style.setProperty('--shadow', 'var(--shadow-r)');
+        }
+
+        function setLightTheme() {
+            root.style.setProperty('--background', '#ffffffd0');
+            root.style.setProperty('--background-section', '#ffffff38');
+            root.style.setProperty('--text', '#333');
+            root.style.setProperty('--text-light', '#3f3f3f');
+            root.style.setProperty('--text-dark', '#000');
+            root.style.setProperty('--shadow', '0 2px 5px rgba(0, 0, 0, 0.1)');
+        }
     </script>
 
     <style>
