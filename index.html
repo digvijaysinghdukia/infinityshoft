@@ -4127,6 +4127,29 @@ document.querySelectorAll(".service-box").forEach((box) => {
 // run fun mouse to have this cursor
 funMouse();
 
+
+
+
+
   </script>
+
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("2jBiCdv_mWSpGqxor"); // replace with your user ID
+  })();
+</script>
+<script>
+  document.querySelector("form").addEventListener("submit", function (e) {
+    e.preventDefault(); // prevent actual form submission
+
+    emailjs.sendForm('service_emn8d8j', 'template_vi55elk', this)
+      .then(function(response) {
+        alert("Message sent successfully!");
+      }, function(error) {
+        alert("Failed to send message. Please try again.");
+      });
+  });
+</script>
 </body>
 </html>
